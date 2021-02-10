@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.lang.Math;
+import java.util.Iterator;
+
+public class HelloWorld{
+    private int v;
+    private ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>();
+    boolean [] visited;
+    int count =0;
+    int result = 0;
+    
+     public static void main(String []args){
+        int[][] prerequisites = new int[]{};
+        System.out.println(findOrder(10, prerequisites);
+     }
+     
+     public int findOrder(int num, int[][] prerequisites) {
+        visited = new boolean[num];
+        for(int i=0; i<num; i++)
+        {
+            visited[i] = false;
+            adj.add(new ArrayList<Integer>());
+        }
+        
+        for(int j=0; j<prerequisites.length; j++)
+        {
+            adj.get(prerequisites[j][1]).add(prerequisites[j][0]);
+        }
+        
+        for(int k=0; k<num; k++)
+        {
+            if(visited[k] == false)
+            {
+                TopologicalSort(k);
+                
+                double temp = Math.sqrt(count);
+                result += Math.ceil(temp);
+            }
+        }
+        
+        
+        return result;
+    }
+    
+    public void TopologicalSort(int e)
+    {
+        visited[e] = true;
+        
+        Integer i;
+        Iterator<Integer> iter = adj.get(e).iterator();
+        while (iter.hasNext()) { 
+            i = iter.next();
+            if(visited[i] == false)
+                TopologicalSort(i);
+        } 
+        
+        count++;
+    }
+}
